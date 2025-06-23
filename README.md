@@ -69,8 +69,8 @@ Infrastructure:
 ### Clone Repository
 
 ```bash
-git clone https://github.com/your-username/rag-app.git
-cd rag-app
+git clone https://github.com/FinishYourQuiz/RAG-Agent-Web.git
+cd RAG-Agent-Web
 ```
 
 ### Backend Setup
@@ -165,4 +165,4 @@ See [Configuration](#configuration) section for all required environment variabl
 
 ## License
 
-MIT © Your Name
+MIT © Stella Yang
