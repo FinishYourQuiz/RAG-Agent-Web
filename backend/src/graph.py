@@ -4,7 +4,8 @@ import os, pathlib, tempfile
 from typing import Dict, List
 
 from langgraph.graph import StateGraph, END
-from langchain_aws import BedrockChat, BedrockEmbeddings          # AWS Bedrock
+from langgraph.graph.state import CompiledStateGraph
+from langchain_aws import ChatBedrock, BedrockEmbeddings          # AWS Bedrock
 from langchain.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
@@ -33,8 +34,8 @@ def retrieve(state: ChatState) -> ChatState:
 
 
 def generate(state: ChatState) -> ChatState:
-    llm = BedrockChat(
-        model_id="anthropic.claude-3-sonnet-v1",  # swap for your Bedrock model
+    llm = ChatBedrock(
+        model="anthropic.claude-3-sonnet-v1",  # swap for your Bedrock model
         streaming=True,
         callbacks=[StreamingStdOutCallbackHandler()],
     )
@@ -50,7 +51,7 @@ def generate(state: ChatState) -> ChatState:
 
 
 # ---------- 3. Build graph ----------
-def build_graph() -> StateGraph:
+def build_graph() -> CompiledStateGraph:
     g = StateGraph(ChatState)
     g.add_node("index", split_and_embed)
     g.add_node("retrieve", retrieve)
