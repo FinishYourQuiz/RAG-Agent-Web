@@ -6,6 +6,9 @@ frontend/coverage/
 .DS_Store
 *.local
 
+# Backend
+backend/src/*local
+
 # Logs
 logs/
 *.log
