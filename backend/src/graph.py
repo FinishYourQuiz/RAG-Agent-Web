@@ -9,7 +9,7 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from typing import Optional
  
 from dotenv import load_dotenv
-load_dotenv(dotenv_path=".env", override=True) 
+load_dotenv(dotenv_path=".env.local", override=True) 
 
 def split_and_embed(state: dict) -> dict:
     # 1. Split the text into overlapping chunks
@@ -33,7 +33,7 @@ def retrieve(state: dict) -> dict:
 def generate(state: dict) -> dict:
     # 4. Call the LLM with context + question
     llm = ChatBedrock(
-        model="anthropic.claude-3-sonnet-v1",
+        model="amazon.titan-text-lite-v1",
         streaming=True,
         callbacks=[StreamingStdOutCallbackHandler()],
     )
@@ -44,7 +44,7 @@ def generate(state: dict) -> dict:
 
     Question: {state['question']}
     """
-    state["answer"] = llm.invoke(prompt)
+    state["answer"] = llm.invoke(prompt).content
     return state
 
 
