@@ -9,7 +9,7 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from typing import Optional
  
 from dotenv import load_dotenv
-load_dotenv(dotenv_path=".env.local", override=True) 
+load_dotenv(dotenv_path="../.env.local", override=True) 
 
 def split_and_embed(state: dict) -> dict:
     # 1. Split the text into overlapping chunks

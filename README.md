@@ -32,7 +32,6 @@ This project demonstrates a simple Retrieval-Augmented Generation (RAG) agent wi
 * **Infrastructure** deployable to AWS ECS, Lambda, or Amplify
 
 ## Architecture
-
 ```
 [User Browser] <--HTTP--> [React Frontend]
                             |
